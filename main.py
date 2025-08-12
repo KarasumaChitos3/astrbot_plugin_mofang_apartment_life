@@ -5,7 +5,7 @@ from .mofangapi import MofangApi
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import asyncio
 
-@register("MofangApartmentLife", "KarasumaChitose", "魔方生活相关信息查询", "0.0.1")
+@register("MofangApartmentLife", "KarasumaChitose", "魔方生活相关信息查询", "0.0.2")
 class MyPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
