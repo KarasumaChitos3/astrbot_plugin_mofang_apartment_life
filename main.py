@@ -34,7 +34,7 @@ class MyPlugin(Star):
         if not self.config.get('reminder_user',None):
             logger.debug("未配置提醒用户，跳过检查")
             return
-        target_qq_uid = f'aiocqhttp:PrivateMessage:{self.config.get("reminder_user","")}'
+        target_qq_uid = f'aiocqhttp:FriendMessage:{self.config.get("reminder_user","")}'
         data = await self.api.get_energy()
         ret_str = ''
         for fee in data['data']:
