@@ -1,0 +1,28 @@
+{
+    "mobile": {
+    "description": "魔方生活手机登录账号",
+    "type": "int",
+    "hint": "这里填入账号",
+    "obvious_hint": true
+  },
+    "password": {
+    "description": "魔方生活手机登录密码",
+    "type": "string",
+    "hint": "这里填入密码",
+    "obvious_hint": true
+  },
+    "reminder_threshold": {
+    "description": "各种费用提醒阈值",
+    "type": "int",
+    "hint": "这里填入提醒阈值",
+    "obvious_hint": true,
+    "default": 20
+  },
+   "reminder_user":
+   {
+    "description": "提醒的用户",
+    "type": "string",
+    "hint": "这里填入提醒用户id",
+    "default":null
+   }
+}
