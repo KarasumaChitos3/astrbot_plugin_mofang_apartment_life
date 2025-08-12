@@ -22,10 +22,11 @@ class MyPlugin(Star):
                 id="scheduled_plugin_check",
                 name="Scheduled Plugin Check",
             )
-        self._check_threshold()
+        
 
     async def initialize(self):
         """可选择实现异步的插件初始化方法，当实例化该插件类之后会自动调用该方法。"""
+        await self._check_threshold()
         
 
     async def _check_threshold(self):
@@ -39,7 +40,7 @@ class MyPlugin(Star):
             if float(fee['balanceAmount']) < self.config.get("reminder_threshold", 20):
                 ret_str += f"提醒：{fee['accountSubjectName']} 余额低于阈值!请及时充值\n"
         message_chain = MessageChain().message(ret_str)
-        yield self.context.send_message(self.config.get('reminder_user',''),message_chain) # 发送一条纯文本消息
+        await self.context.send_message(self.config.get('reminder_user',''),message_chain) # 发送一条纯文本消息
     
     # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
     @filter.command("mofang")
