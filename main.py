@@ -34,13 +34,14 @@ class MyPlugin(Star):
         if not self.config.get('reminder_user',None):
             logger.debug("未配置提醒用户，跳过检查")
             return
+        target_qq_uid = f'aiocqhttp:PrivateMessage:{self.config.get("reminder_user","")}'
         data = await self.api.get_energy()
         ret_str = ''
         for fee in data['data']:
             if float(fee['balanceAmount']) < self.config.get("reminder_threshold", 20):
                 ret_str += f"提醒：{fee['accountSubjectName']} 余额低于阈值!请及时充值\n"
         message_chain = MessageChain().message(ret_str)
-        await self.context.send_message(self.config.get('reminder_user',''),message_chain) # 发送一条纯文本消息
+        await self.context.send_message(target_qq_uid,message_chain) # 发送一条纯文本消息
     
     # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
     @filter.command("mofang")

@@ -22,7 +22,7 @@
    {
     "description": "提醒的用户",
     "type": "string",
-    "hint": "这里填入提醒用户id",
+    "hint": "这里填入提醒用户QQ号（目前只支持aiocqhttp)",
     "default":null
    }
 }
